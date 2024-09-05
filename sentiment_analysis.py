@@ -6,6 +6,7 @@ from nltk.tokenize import word_tokenize
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 import nltk
+import joblib
 
 # Download stopwords
 nltk.download('stopwords')
@@ -37,3 +38,6 @@ predictions = model.predict(X_test_vect)
 # Evaluate the model
 accuracy = accuracy_score(y_test, predictions)
 print(f"Model Accuracy: {accuracy * 100:.2f}%")
+
+joblib.dump(model, 'sentiment_model.pkl')
+joblib.dump(vectorizer, 'vectorizer.pkl')
